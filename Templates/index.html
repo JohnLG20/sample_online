@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+ <title>Add Resident</title>
+
+  <style>
+   body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+
+   input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+   }
+
+   input[type=submit] {
+
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+   }
+
+
+   input[name='purpose'] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    height: 200px;
+    box-sizing: border-box;
+   }
+
+   
+
+
+div.content {
+  margin-left: 100px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+
+  </style>
+ </head>
+ <body>
+
+    
+
+    
+  <div class="content">
+    <h2 style="text-align: center; font-size: 250%;">Resident Appointment</h2>
+    <form action = "{{url_for('resident_appointments')}}" method="post">
+      <div style="text-align: center;" class="msg">{{ msg }}</div>
+      <table align="center" cellspacing = "2" cellpadding = "10" border = "10" width="700" style="background-color: grey;">
+          <tr><td style="background-color: aquamarine; font-weight: bolder;">Fullname</td><td style="background-color: wheat; font-weight: bolder;"><input name="fname" style="text-transform: uppercase;" id="fname"  type="text" placeholder="Enter Fullname........" class="textbox"/></td></tr>
+          <tr><td style="background-color: aquamarine; font-weight: bolder;">Contact No.</td><td style="background-color: wheat; font-weight: bolder;"><input name="contact" type="number" placeholder="Enter Your Contact" class="textbox"/></td></tr>
+          <tr><td style="background-color: aquamarine; font-weight: bolder;">Date and Time</td><td style="background-color: wheat; font-weight: bolder;"><input name="dateandtime" type="datetime-local" /></td></tr>
+          <tr><td style="background-color: aquamarine; font-weight: bolder;">Address</td><td style="background-color: wheat; font-weight: bolder;"><input name="address" type="text" placeholder="Enter Address..........." class="textbox"/></td></tr>
+          <tr><td style="background-color: aquamarine; font-weight: bolder;">Purpose</td><td style="background-color: wheat; font-weight: bolder;"><input name="purpose" type="text" placeholder="Enter Purpose of transaction........" class="textbox"/></td></tr>
+          <tr><td style="background-color: aquamarine; font-weight: bolder;"></td><td style="background-color: wheat; font-weight: bolder;"><input type="submit" value="Submit"></td></tr>
+
+ </table>
+ </form> 
+  </div>
+ </body>
+ </html>  

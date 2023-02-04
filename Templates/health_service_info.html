@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+   <title>student info</title>
+
+ <style>
+  body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+  div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+
+  .sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: lightgrey;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  font-weight: bold;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #0866e2;
+  color: gray;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 30px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+ </style>
+ </head>
+ <body>
+  <div class="sidebar">
+    <a href="/Home2" class="btn">Home</a>
+    <a href="/saverecord" class="btn add">Add Resident</a>
+    <a href="/resident_info" class="btn view">List of Resident</a>
+    <a href="/pwd" class="btn view">List of PWD(Personal With Disability)</a>
+    <a href="/senior" class="btn view">List of Senior Citezine</a>
+    <a href="/appointment" class="btn appointments">Appointment</a>
+    <a href="/health_info" class="btn healthservice">Health Services Info</a>
+    <a href="{{url_for('logout')}}" class="btn">Log Out</a>
+  </div>
+
+
+<div class="content">
+  <h2 style="text-align: center; font-size: 250%;">Resident Info</h2>
+  <table align="center" cellspacing = "2" cellpadding = "8" border = "5" width="fixed" >
+  <thead>
+  <td>FirstName</td>
+  <td>MiddleName</td>
+  <td>LastName</td>
+  <td>Gender</td>
+  <td>Age</td>
+  <td>Contact</td>
+  <td>D.O.B</td>
+  <td>City</td>
+  <td>Barangay</td>
+  <td>Purok</td>
+  <td>PWD or SENIOR</td>
+
+  </thead>
+  {% for row in resident_info %}
+  <tr>
+  <td>{{row["fname"]}}</td>
+  <td>{{row["mname"]}}</td>
+  <td>{{row["lname"]}}</td>
+  <td>{{row["gender"]}}</td>
+  <td>{{row["age"]}}</td>
+  <td>{{row["contact"]}}</td>
+  <td>{{row["dob"]}}</td>
+  <td>{{row["city"]}}</td>
+  <td>{{row["brgy"]}}</td>
+  <td>{{row["purok"]}}</td>
+  <td>{{row["p/s"]}}</td>
+  </tr>
+  {% endfor %}   
+  </table>
+  <br><br>
+  </div>
+  </body>
+  </html> 
+ 

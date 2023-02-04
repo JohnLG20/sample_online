@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+   <title>student info</title>
+
+ <style>
+  body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+  div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+
+  .sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: lightgrey;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  font-weight: bold;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #0866e2;
+  color: gray;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 30px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+ </style>
+ </head>
+ <body>
+  <div class="sidebar">
+    <a href="/Home2" class="btn">Home</a>
+    <a href="/saverecord" class="btn add">Add Resident</a>
+    <a href="/resident_info" class="btn view">List of Resident</a>
+    <a href="/pwd" class="btn view">List of PWD(Personal With Disability)</a>
+    <a href="/senior" class="btn view">List of Senior Citezine</a>
+    <a href="/appointment" class="btn appointments">Appointment</a>
+    <a href="/health_info" class="btn healthservice">Health Services Info</a>
+    <a href="{{url_for('logout')}}" class="btn">Log Out</a>
+  </div>
+
+
+
+<div class="content">
+  <h2 style="text-align: center; font-size: 250%;">LIST OF PWD(Personal With Disability)</h2>
+  <table align="center" cellspacing = "2" cellpadding = "8" border = "5" width="fixed" style="box-sizing: border-box ;background-color: gray; border-radius: 10px; margin: 5px;" >
+    <thead>
+      <td style="background-color: aquamarine; font-weight: bolder;">Id</td>
+      <td style="background-color: aquamarine; font-weight: bolder;">FullName</td>
+      <td style="background-color: aquamarine; font-weight: bolder;">Gender</td>
+      <td style="background-color: aquamarine; font-weight: bolder;">Age</td>
+      <td style="background-color: aquamarine; font-weight: bolder;">Contact</td>
+      <td style="background-color: aquamarine; font-weight: bolder;">D.O.B</td>
+      <td style="background-color: aquamarine; font-weight: bolder;">City</td>
+      <td style="background-color: aquamarine; font-weight: bolder;">Barangay</td>
+      <td style="background-color: aquamarine; font-weight: bolder;">Purok</td>
+      <td style="background-color: aquamarine; font-weight: bolder;">PWD or SENIOR or N/A</td>
+      </thead>
+
+  {% for row in p %}
+  <tr>
+    <td style="background-color: wheat; font-weight: bolder;  text-transform: uppercase;">{{row["id"]}}</td>
+    <td style="background-color: wheat; font-weight: bolder;  text-transform: uppercase;">{{row["fname"]}}</td>
+    <td style="background-color: wheat; font-weight: bolder;  text-transform: uppercase;">{{row["gender"]}}</td>
+    <td style="background-color: wheat; font-weight: bolder;  text-transform: uppercase;">{{row["age"]}}</td>
+    <td style="background-color: wheat; font-weight: bolder;  text-transform: uppercase;">{{row["contact"]}}</td>
+    <td style="background-color: wheat; font-weight: bolder;  text-transform: uppercase;">{{row["dob"]}}</td>
+    <td style="background-color: wheat; font-weight: bolder;  text-transform: uppercase;">{{row["city"]}}</td>
+    <td style="background-color: wheat; font-weight: bolder;  text-transform: uppercase;">{{row["brgy"]}}</td>
+    <td style="background-color: wheat; font-weight: bolder;  text-transform: uppercase;">{{row["purok"]}}</td>
+    <td style="background-color: wheat; font-weight: bolder;  text-transform: uppercase;">{{row["pwdorsenior"]}}</td>
+    </tr>
+  {% endfor %}
+
+  
+  </table>
+  <br><br>
+  </body>
+  </html> 
+ 

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+   <title>student info</title>
+
+ <style>
+  body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+  div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+
+  .sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: lightgrey;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  font-weight: bold;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #0866e2;
+  color: gray;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 30px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+
+
+
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+ </style>
+ </head>
+ <body>
+  <div class="sidebar">
+    <a href="/Home2" class="btn">Home</a>
+    <a href="/saverecord" class="btn add">Add Resident</a>
+    <a href="/resident_info" class="btn view">List of Resident</a>
+    <a href="/pwd" class="btn view">List of PWD(Personal With Disability)</a>
+    <a href="/view_appointments" class="btn view">List of Senior Citezine</a>
+    <a href="/appointment" class="btn appointments">Appointment</a>
+    <a href="/health_info" class="btn healthservice">Health Services Info</a>
+    <a href="{{url_for('logout')}}" class="btn">Log Out</a>
+  </div>
+
+
+<div class="content">
+  <h2 style="text-align: center; font-size: 250%;">LIST OF SENIOR CITIZEN</h2>
+ 
+
+
+
+
+  <div class="row">
+    <div class="column" style="background-color:#aaa;">
+      <form action = "{{ url_for('view_appointments') }}" method="post">
+        <table align="center" cellspacing = "2" cellpadding = "8" border = "5" width="5"  style="box-sizing: border-box ;background-color: lightgrey; border-radius: 10px; margin: 5px;">
+          {%for row in e%}
+          <tr><td style="font-weight: bolder;">ID</td><td style="background-color: wheat;"><input style="text-transform: uppercase; font-weight: bold; font-size: 20px;" id="id" name="id" type="text" value="{{row["id"]}}" class="textbox"/></td></tr>
+          <tr><td style="font-weight: bolder;">Fullname</td><td style="background-color: wheat;"><input style="text-transform: uppercase; font-size: 15px; font-weight: bold;" id="fname" name="fname" type="text" value="{{row["fname"]}}" class="textbox"/></td></tr>
+          <tr><td style="font-weight: bolder;">Contact</td><td style="background-color: wheat;"><input style="text-transform: uppercase;  font-size: 15px; font-weight: bold;" name="contact" type="text" value="{{row["contact"]}}" class="textbox"/></td></tr>
+          <tr><td style="font-weight: bolder;">DateTime</td><td style="background-color: wheat;"><input style="text-transform: uppercase;  font-size: 15px; font-weight: bold;" name="datetime" type="text" value="{{row["date and time"]}}" class="textbox"/></td></tr>
+          <tr><td style="font-weight: bolder;">Address</td><td style="background-color: wheat;"><input style="text-transform: uppercase;  font-size: 15px; font-weight: bold;" name="address" type="text" value="{{row["address"]}}" class="textbox"/></td></tr>
+          <tr><td style="font-weight: bolder;">Purpose</td><td style="background-color: wheat;"><input style="margin-left: 100px; text-transform: uppercase;  font-size: 15px; font-weight: bold;" name="purpose" type="text" value="{{row["purpose"]}}" class="textbox"/></td></tr>
+          {%endfor%}
+        </table>
+      </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <br><br>
+  </body>
+  </html> 
+ 

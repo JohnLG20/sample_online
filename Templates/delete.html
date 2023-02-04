@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+   <title>Delete Resident</title>
+
+ <style>
+      body {font-family: "Lato", sans-serif;}
+
+.sidebar {
+  margin: -8px;
+  padding: 0;
+  width: 200px;
+  background-color: lightgrey;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  font-weight: bold;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #0866e2;
+  color: gray;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 100%;
+  overflow: 10000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+
+</style>
+</head>
+<body>
+  <div class="sidebar">
+    <a href="/Home2" class="btn">Home</a>
+    <a href="/saverecord" class="btn add">Add Resident</a>
+    <a href="/resident_info" class="btn view">View Resident Info</a>
+    <a href="/pwd" class="btn view">View PWD Info</a>
+    <a href="/senior" class="btn view">View SENIOR Info</a>
+    <a href="/appointment" class="btn appointments">Appointment</a>
+    <a href="/health_info" class="btn healthservice">Health Services Info</a>
+    <a href="{{url_for('logout')}}" class="btn">Log Out</a>
+  </div>
+
+
+
+  <div class="content">
+    <h2 style="text-align: center; font-size: 250%;">Delete Resident Info</h2>
+
+
+    <h1>Are you sure you want to DELETE Resident?</h1>
+    <p>This case is permanent it may hard to restore Data from Resident!</p>
+    <h2></h2>Type the Resident full name to be DELETED!</h2>
+
+    <h1 class="msg">{{msg}}</h1>
+    <form action="{{ url_for('delete_resident') }}" method="post">
+      <table align="center" cellspacing = "2" cellpadding = "8" border = "5" width="5"  style="box-sizing: border-box ;background-color: lightgrey; border-radius: 10px; margin: 5px; width:810px; margin-left: 150px;">
+        <tr><td style="font-weight: bolder;">Delete</td><td style="background-color: wheat;"><input style="width: 315px; margin-left: 200px; text-transform: uppercase; text-transform: uppercase;" name="fname" type="text" placeholder="ENTER FULLNAME TO DELETE" class="textbox"/><input style=" width: 250px; border:none; background-color: mediumpurple; border-radius: 4px; font-weight: bolder; height: 30px;margin-left: 240px; margin-top: 3px;"  type="submit" value="DELETE"></td></tr>
+      </table>
+    </form>
+  </div>
+</body>
+</html> 
+
+
+
+
+
+
+
+ 

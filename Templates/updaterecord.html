@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+/* Main content */
+.content {
+  margin-left: 300px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: green;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+  
+
+<div class="sidenav">
+  <a href="/Home2" class="btn">Home</a>
+  <a href="/resident_info" class="btn">Resident</a>
+  <a href="/appointment" class="btn appointments">Appointment</a>
+  <a href="/health_info" class="btn healthservice">Health Services Info</a>
+  <a href="{{url_for('logout')}}" class="btn">Log Out</a>
+</div>
+
+
+
+<div class="content">
+  <div class="msg">{{ msg }}</div>
+  <form action = "{{ url_for('updaterecord') }}" method="post">
+    <table align="center" cellspacing = "2" cellpadding = "8" border = "5" width="3"  style="box-sizing: border-box ;background-color: lightgrey; border-radius: 10px; margin: 3px;width: 75%;">
+    {%for row in f%}
+    <h1>Resident Information</h1>
+    <tr><td style="background-color: aquamarine; font-weight: bolder; width: 20%;">Fullname</td><td style="background-color: wheat; font-weight: bolder;"><input style="text-transform: uppercase;" id="fname" name="fname" type="text" value="{{row["fname"]}}"/></td></tr>
+    <tr><td style="background-color: aquamarine; font-weight: bolder;">Gender</td><td style="background-color: wheat; font-weight: bolder;"><input style="text-transform: uppercase;" name="gender" type="text" value="{{row["gender"]}}"/></td></tr>
+    <tr><td style="background-color: aquamarine; font-weight: bolder;">Age</td><td style="background-color: wheat; font-weight: bolder;"><input name="age" type="text" value="{{row["age"]}}"/></td></tr>
+    <tr><td style="background-color: aquamarine; font-weight: bolder;">Birth Date</td><td style="background-color: wheat; font-weight: bolder;"><input style="text-transform: uppercase;" name="bdate" type="text" value="{{row["dob"]}}" /></td></tr>
+    <tr><td style="background-color: aquamarine; font-weight: bolder;">Birth Place</td><td style="background-color: wheat; font-weight: bolder;"><input style="text-transform: uppercase;" name="bplace" type="text" value="{{row["bp"]}}"/></td></tr>
+    <tr><td style="background-color: aquamarine; font-weight: bolder;">Civil Status</td><td style="background-color: wheat; font-weight: bolder;"><input style="text-transform: uppercase;"  name="civilstatus" type="text" value="{{row["civilstatus"]}}"/></td></tr>
+    <tr><td style="background-color: aquamarine; font-weight: bolder;">Religion</td><td style="background-color: wheat; font-weight: bolder;"><input style="text-transform: uppercase;"  name="religion" type="text" value="{{row["religion"]}}"/></td></tr>
+    <tr><td style="background-color: aquamarine; font-weight: bolder;">Nationality</td><td style="background-color: wheat; font-weight: bolder;"><input style="text-transform: uppercase;" " name="nationality" type="text" value="{{row["nationality"]}}"/></td></tr>
+    <tr><td style="background-color: aquamarine; font-weight: bolder;">Contact</td><td style="background-color: wheat; font-weight: bolder;"><input style="text-transform: uppercase;"  name="contact" type="text" value="{{row["contact"]}}"/></td></tr>
+    <tr><td style="background-color: aquamarine; font-weight: bolder;">City</td><td style="background-color: wheat; font-weight: bolder;"><input style="text-transform: uppercase;" name="city" type="text" value="{{row["city"]}}"/></td></tr>
+    <tr><td style="background-color: aquamarine; font-weight: bolder;">Barangay</td><td style="background-color: wheat; font-weight: bolder;"><input style="text-transform: uppercase;" name="brgy" type="text" value="{{row["brgy"]}}"/></td></tr>
+    <tr><td style="background-color: aquamarine; font-weight: bolder;">Purok</td><td style="background-color: wheat; font-weight: bolder;"><input name="purok" type="text" value="{{row["purok"]}}" /></td></tr>
+    <tr><td style="background-color: aquamarine; font-weight: bolder;">Length Of Stay</td><td style="background-color: wheat; font-weight: bolder;"><input style="text-transform: uppercase;"  name="lengthofstay" type="text" value="{{row["lengthofstay"]}}"/></td></tr>
+    <tr><td style="background-color: aquamarine; font-weight: bolder;">Pwd or Senior</td><td style="background-color: wheat; font-weight: bolder;"><input style="text-transform: uppercase;" name="pwdorsenior" type="text" value="{{row["pwdorsenior"]}}"/></td></tr>
+    <tr><td></td><td><input style="width: 250px; border:none; background-color: lightgreen; border-radius: 4px; font-weight: bolder; height: 30px;margin-left: 150px;"  type="submit" value="UPDATE RECORD"></td></tr>
+    
+    
+    
+    
+    <table align="center" cellspacing = "2" cellpadding = "8" border = "5" width="3"  style="box-sizing: border-box ;background-color: lightgrey; border-radius: 10px; margin: 3px;width: 75%;">
+      <h1>Resident Household Member</h1>
+      <tr><td style="background-color: aquamarine; font-weight: bolder;">Occupation</td><td style="background-color: wheat; font-weight: bolder;"><input style="text-transform: uppercase;" name="occupation" type="text" value="{{row["occupation"]}}"/></td></tr>
+      <tr><td></td><td><input style="width: 250px; border:none; background-color: lightgreen; border-radius: 4px; font-weight: bolder; height: 30px;margin-left: 150px;"  type="submit" value="UPDATE RECORD"></td></tr>
+      </table>
+    {%endfor%}
+  </table>
+</form>
+
+</div>
+  
+  
+
+</div>
+</body>
+</html> 
